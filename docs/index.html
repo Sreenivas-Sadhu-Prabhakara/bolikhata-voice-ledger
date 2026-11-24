@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; form-action 'self'">
+<title>Voice-entry credit ledger app for kirana shops and sari-sari stores · Open MSME</title>
+<meta name="description" content="Free offline Android and iOS app for kirana shops and sari-sari stores: say &quot;Ramu, 200, cooking oil&quot; in your own language and it becomes a credit-ledger entry. Replaces the paper khata or listahan. All data stays on the phone.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Voice-entry credit ledger app for kirana shops and sari-sari stores">
+<meta property="og:description" content="Tap once, say the name, the amount and the goods in your own language, check what the phone heard, and the credit entry is in the book. No account, no cloud.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/accent.css">
+<script src="assets/theme-init.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="dot"></span>
+      <b>Open MSME</b>
+      <span class="tag">voice credit ledger</span>
+    </a>
+    <span class="sp"></span>
+    <a class="home" href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a>
+    <button class="themer" data-themer type="button">Theme</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Retail &amp; kirana · India + Philippines</div>
+      <h1>Voice-entry credit ledger app for kirana shops and sari-sari stores</h1>
+      <p class="lede">Hands covered in flour, a queue at the counter. Tap once and say &ldquo;Ramu, 200, cooking oil&rdquo; in your own language. The phone shows you what it heard, you tap save, and the credit entry is in the book &mdash; in place of the paper khata or listahan.</p>
+      <div class="who">
+        <span class="pill">Kirana shops, sari-sari stores and neighbourhood traders who sell on credit</span>
+        <span class="pill reg">On-device only</span>
+        <span class="pill reg">No account</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="card">
+      <div class="prose">
+        <h2>What it does</h2>
+        <p>It keeps the credit book that every neighbourhood shop keeps anyway &mdash; who took goods, how much, and what has been paid back &mdash; and it lets you write a line into it by speaking instead of writing.</p>
+        <p>One sentence is enough. The app pulls three things out of it: the <strong>customer</strong>, the <strong>amount</strong> and the <strong>goods</strong>. The amount can be digits (<code>200</code>, <code>1,200</code>, <code>&#8377;200</code>, <code>&#8369;200</code>) or number words &mdash; <code>do sau</code>, <code>paanch sau</code>, <code>ek hazaar</code>, <code>irunooru</code>, <code>aayiram</code>, <code>dalawang daan</code>, <code>isang libo</code>, <code>duha ka gatos</code> &mdash; and it can sit anywhere in the sentence, not just in the middle.</p>
+        <p>Then it stops and shows you the draft. <strong>Nothing is ever saved from speech alone.</strong> The customer, the amount and the goods each sit in a field you can correct, the app tells you how sure it is about what it heard, and the entry reaches the book only when you press save. A mis-heard amount in a credit book is money lost, so the phone is allowed to listen but not to write.</p>
+        <p>From there it is an ordinary ledger, done well: a page per customer with every credit and every payment, a running balance, the biggest debtor at the top of the list, and the total you have out on credit on the first screen. When it is time to ask, the app writes a polite reminder naming the balance, in English, Hindi, Tamil, Tagalog or Cebuano, and hands it to you to send.</p>
+
+        <h2>Who it&rsquo;s for</h2>
+        <p>Kirana shops, sari-sari stores and neighbourhood traders who sell on credit &mdash; in India and the Philippines &mdash; and who currently keep that credit in a paper notebook, because a notebook is faster than any app at the moment of the sale.</p>
+        <p>It is built for that moment: one hand, a cheap phone, bright light, no time. Large buttons, large numbers, no sign-up, no tutorial, and it works with the aeroplane mode on.</p>
+
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>Press the big record button and say the entry: name, amount, goods &mdash; in Hindi, Tamil, Tagalog, Cebuano, English, or a mix.</li>
+          <li>The words appear on screen as the phone hears them.</li>
+          <li>The app splits them into customer, amount and goods, and shows the draft with every field editable and a note on how sure it is.</li>
+          <li>Correct anything that is wrong and press save. Only then does the book change &mdash; and a tap on &ldquo;Undo&rdquo; takes it straight back out.</li>
+          <li>Later, record a payment against the same customer, and the balance comes down by itself.</li>
+          <li>When you want to remind someone, pick a language, copy or share the message, and send it yourself from your own chat app.</li>
+        </ol>
+
+        <h2>Build &amp; run</h2>
+        <p>Flutter 3.44 or newer. Connect a phone, or start an emulator, and run:</p>
+<pre><code>git clone https://github.com/sreenivas-sadhu-prabhakara/bolikhata-voice-ledger.git
+cd bolikhata-voice-ledger
+
+flutter pub get
+flutter run                 # on a connected phone or emulator
+
+flutter test                # all the ledger and parsing rules
+flutter analyze
+dart format --output=none --set-exit-if-changed .
+
+flutter build apk --release # Android
+flutter build ios --release # iOS, on a Mac with Xcode</code></pre>
+        <p>The app asks for one permission, the microphone, the first time you record. If you refuse it, or the phone has no speech recogniser, the app falls back to typing the entry and keeps working.</p>
+
+        <h2>What it stores</h2>
+        <p>One file on the phone, holding your customers and their entries. That is all there is.</p>
+        <p>There is no account, no server, no sync and no analytics. The app makes no network calls at all, and the released Android app asks for exactly one permission &mdash; the microphone &mdash; and no internet permission. Nothing about your customers, your balances or your voice is sent anywhere by this app.</p>
+        <p>Because the book is only on the phone, you should export it now and then: settings has a CSV of every entry and a plain-text balance summary, which you can send to yourself or hand to an accountant.</p>
+      </div>
+
+      <h2>Features</h2>
+      <div class="featgrid">
+        <div class="feat">
+          <h3>One-tap voice entry</h3>
+          <p>Say the name, the amount and the goods in one breath. The amount may be digits or number words, and may come first, last or in the middle.</p>
+        </div>
+        <div class="feat">
+          <h3>Always confirmed</h3>
+          <p>Speech produces a draft, never an entry. Every field is editable and the app says how sure it is before you save.</p>
+        </div>
+        <div class="feat">
+          <h3>Four number-word languages</h3>
+          <p>Hindi, Tamil, Tagalog and Cebuano number words, in romanised spelling and in Devanagari and Tamil script, in tables anyone can extend.</p>
+        </div>
+        <div class="feat">
+          <h3>A page per customer</h3>
+          <p>Every credit and payment, newest first, with a running balance. Biggest debtor at the top of the list, total out on credit on the first screen.</p>
+        </div>
+        <div class="feat">
+          <h3>Payments, not rewrites</h3>
+          <p>A payment is its own line, so the history stays as auditable as the paper book it replaces. Advances are reported separately, never netted off someone else&rsquo;s debt.</p>
+        </div>
+        <div class="feat">
+          <h3>Reminders you send</h3>
+          <p>A polite message naming the balance, in five languages, ready to copy or share. A settled or overpaid account never gets asked for money.</p>
+        </div>
+        <div class="feat">
+          <h3>Works with no signal</h3>
+          <p>Offline from top to bottom. No account to create, nothing to load, nothing to wait for.</p>
+        </div>
+        <div class="feat">
+          <h3>Manual export</h3>
+          <p>CSV of every entry, or a plain-text summary of where each customer stands &mdash; your backup, in your hands.</p>
+        </div>
+      </div>
+
+      <div class="note">
+        <p><strong>What this app does not do.</strong> There is <strong>no cloud sync and no backend</strong>. The book lives on one phone, so it cannot be opened on a second phone, two people cannot keep it at once, and there is <strong>no automatic backup</strong> &mdash; if the phone is lost, wiped or reset, the book goes with it. The manual CSV and summary export is the only backup, and you have to remember to take it.</p>
+        <p>The app does <strong>not recognise speech itself</strong>. It asks the phone&rsquo;s own speech engine, so accuracy depends on that engine, on the languages installed on the phone, and on how noisy the shop is. Some phones need a language pack downloaded before they will transcribe offline, and some vendors&rsquo; engines do their recognition on the vendor&rsquo;s servers &mdash; that is a property of the phone, not of this app, which has no network access of its own.</p>
+        <p>The <strong>number-word tables cover Hindi, Tamil, Tagalog and Cebuano</strong> only, and only the small numbers, hundreds and thousands a shop entry actually uses. Any other language still works when the amount arrives as digits, which is what most recognisers produce. The parser is a documented set of rules, not a model: it will sometimes split a name and the goods in the wrong place, which is exactly why the confirmation screen exists.</p>
+        <p>The app <strong>never sends a message</strong>. It writes reminders and hands them to you; you send them from your own WhatsApp, Messenger or SMS, under your own name. It has no messaging permission.</p>
+        <p>It is a record of what you are owed &mdash; not an accounting package, not a tax filing tool, not a credit scoring service, and it calculates no interest. The balances are only as good as the entries you confirm.</p>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Open MSME · open-source tool for MSMEs in India &amp; the Philippines · MIT</span>
+    <span><a href="https://sreenivas-sadhu-prabhakara.github.io/openmsme/">All tools</a></span>
+  </div>
+</footer>
+
+<script src="assets/ui.js"></script>
+</body>
+</html>
